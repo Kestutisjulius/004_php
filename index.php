@@ -121,18 +121,56 @@ echo '<hr>';
     Tris kartus iškritus herbui;
     Tris kartus iš eilės iškritus herbui;
     */
-    $m = null;
+
+    $stop = 200;
+    $count = 0;
+    $countH = 0;
+    $countHdown = 0;
+    $s = '';
+    $h = '';
+    $res = '';
+    $resH = '';
     do {
-        $stop = 0;
-        $stop++;
-        
-        $res = '';
-        $m = rand(0,1);
-        if($m == 0){
-            $res = 'H';
-            echo 'H';
-        } else {
-            $res = 'S';
-            echo 'S';
+        $countHdown++;
+        $count++;
+        if(!(--$stop)){
+            echo 'Stop';
+            break;
         }
-    } while ($res = 'H');
+       // $res = rand(0,1) ? $h .= 'H' : $s .= 'S'; 
+        if(rand(0,1)){
+            $h .= 'H';
+            $countH++;
+            if($countH == $countHdown && $countHdown == 3){
+                echo 'Hooray';
+            } else{
+                $countHdown = 0;
+            }
+        } else {
+            $s .= 'S';
+        }
+        
+        
+
+    } while (!(str_contains($h, 'HHHH')));
+    print_r ( $h .':' .$count);
+    /* 
+    Kazys ir Petras žaidžiai Bingo. Petras surenka taškų kiekį nuo 10 iki 20, Kazys surenka taškų kiekį nuo 5 iki 25. Vienoje eilutėje išvesti žaidėjų vardus su taškų kiekiu ir “Partiją laimėjo: ​laimėtojo vardas​”. Taškų kiekį generuokite funkcija ​rand()​. Žaidimą laimi tas, kas greičiau surenka 222 taškus. Partijas kartoti tol, kol kažkuris žaidėjas pirmas surenka 222 arba daugiau taškų. Nenaudoti cikle break.
+
+    */
+
+    /* 
+        Reikia nupaišyti pilnavidurį rombą, taip pat, kaip ir pilnavidurį kvadratą (https://lt.wikipedia.org/wiki/Rombas), kurio aukštis 21 eilutė. Reikia padaryti, kad kiekviena rombo žvaigždutė būtų atsitiktinės RGB spalvos (perkrovus puslapį spalvos turi keistis).
+    */
+
+    /* 
+            Sumodeliuokite vinies kalimą. Įkalimo gylį sumodeliuokite pasinaudodami rand() funkcija. Vinies ilgis 8.5cm (pilnai sulenda į lentą).
+            “Įkalkite” 5 vinis mažais smūgiais. Vienas smūgis vinį įkala 5-20 mm. Suskaičiuokite kiek reikia smūgių.
+            “Įkalkite” 5 vinis dideliais smūgiais. Vienas smūgis vinį įkala 20-30 mm, bet yra 50% tikimybė (pasinaudokite rand() funkcija tikimybei sumodeliuoti), kad smūgis nepataikys į vinį. Suskaičiuokite kiek reikia smūgių.
+
+    */
+
+    /* 
+       Sugeneruokite stringą, kurį sudarytų 50 atsitiktinių skaičių nuo 1 iki 200, atskirtų tarpais. Skaičiai turi būti unikalūs (t.y. nesikartoti). Sugeneruokite antrą stringą, pasinaudodami pirmu, palikdami jame tik pirminius skaičius (t.y tokius, kurie dalinasi be liekanos tik iš 1 ir patys savęs). Skaičius stringe sudėliokite didėjimo tvarka, nuo mažiausio iki didžiausio.
+ 
+    */
